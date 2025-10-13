@@ -1,67 +1,349 @@
-<!-- About Section -->
-<section id="about" class="about-section">
-  <div class="container">
-    <h2>Welcome to GlowRush</h2>
-    <p>Your ultimate destination for premium makeup products.</p>
-    
-    <!-- Product Section -->
-    <div class="product">
-      <img src="https://images.pexels.com/photos/3018845/pexels-photo-3018845.jpeg" alt="Makeup Product" class="product-image" />
-      <h3>Featured Product</h3>
-      <p>Discover the best makeup to glow every day.</p>
-      
-      <!-- CTA Button -->
-      <a href="#shop" class="cta-button">Shop Now</a>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Glamora Beauty — Home</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent:#d63384;
+      --dark:#0f1724;
+      --muted:#6b7280;
+      --bg:#fff;
+      --card:#fff5f8;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--dark);
+      background:linear-gradient(180deg,#fff 0%, #fff 60%, #fff9fb 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter: blur(6px);
+      border-bottom:1px solid #eee;
+    }
+    .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      letter-spacing:0.2px;
+    }
+    .brand .logo{
+      width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#ff6fa3);display:inline-block;
+      box-shadow:0 4px 12px rgba(214,51,132,0.18);
+    }
+    nav ul{list-style:none;padding:0;margin:0;display:flex;gap:18px;align-items:center}
+    nav a{color:var(--dark);text-decoration:none;font-weight:600;font-size:0.95rem}
+    .actions{display:flex;gap:12px;align-items:center}
+    .btn{
+      padding:9px 14px;border-radius:8px;border:0;font-weight:700;cursor:pointer;
+    }
+    .btn.primary{background:var(--accent);color:#fff}
+    .btn.ghost{background:transparent;color:var(--dark);border:1px solid #eee}
+
+    /* mobile nav */
+    .mobile-toggle{display:none;font-size:1.25rem;background:transparent;border:0}
+
+    /* hero */
+    .hero{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+      padding:56px 0;
+    }
+    .hero-left{flex:1;max-width:640px}
+    .eyebrow{color:var(--muted);font-size:0.9rem;margin-bottom:10px;font-weight:600}
+    .hero-title{
+      font-family:"Playfair Display",serif;
+      font-size:2.6rem;
+      margin:0 0 16px 0;
+      line-height:1.02;
+      color:var(--dark)
+    }
+    .hero-desc{color:var(--muted);font-size:1.05rem;margin-bottom:22px;line-height:1.6}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-image{flex:1;display:flex;justify-content:center}
+    .hero-image img{width:100%;max-width:520px;border-radius:18px;box-shadow:0 20px 50px rgba(2,6,23,0.08);}
+
+    /* features */
+    .features{display:flex;gap:18px;margin:28px 0;flex-wrap:wrap}
+    .feature{flex:1;min-width:180px;background:#fff;border-radius:12px;padding:14px;border:1px solid #f3e8ef;display:flex;gap:12px;align-items:center}
+    .feature .icon{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#ffd9e8,#ffe6f2);display:inline-flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)}
+
+    /* product grid */
+    .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;margin:26px 0}
+    .card{
+      background:linear-gradient(180deg,#fff,#fff);
+      border-radius:12px;padding:14px;border:1px solid #f0e7ec;
+      display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(2,6,23,0.08)}
+    .card img{width:100%;height:160px;object-fit:cover;border-radius:10px}
+    .card h4{margin:0;font-size:1rem}
+    .price{color:var(--accent);font-weight:700}
+
+    /* collections */
+    .collections{display:flex;gap:18px;margin:32px 0;flex-wrap:wrap}
+    .collection{flex:1;min-width:240px;border-radius:12px;padding:18px;background:linear-gradient(180deg,#fff7fb,#fff0f6);box-shadow:0 8px 30px rgba(214,51,132,0.06)}
+
+    /* newsletter */
+    .newsletter{display:flex;gap:14px;align-items:center;padding:28px;border-radius:12px;background:#fff;border:1px solid #f4e7ee;margin:28px 0}
+    .newsletter input{flex:1;padding:12px;border-radius:10px;border:1px solid #eee;font-size:1rem}
+
+    /* footer */
+    footer{margin-top:40px;padding:28px 0;border-top:1px solid #eee;color:var(--muted)}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px}
+
+    /* responsive */
+    @media (max-width:900px){
+      .hero{flex-direction:column-reverse;align-items:flex-start}
+      .hero-image img{max-width:100%}
+      nav ul{display:none}
+      .mobile-toggle{display:inline-block}
+      .actions{gap:8px}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <div>
+          <div style="font-size:0.95rem">Glamora</div>
+          <div style="font-size:0.7rem;color:var(--muted);margin-top:2px">Beauty • Makeup</div>
+        </div>
+      </div>
+
+      <nav>
+        <button class="mobile-toggle" aria-controls="main-nav" aria-expanded="false" onclick="toggleNav()">☰</button>
+        <ul id="main-nav">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#products">Shop</a></li>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="actions">
+        <a class="btn ghost" href="#search">Search</a>
+        <a class="btn primary" href="#products">Shop Now</a>
+      </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- CSS -->
-<style>
-  .about-section {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #fff0f5;
-  }
-  .about-section h2 {
-    font-size: 2.5rem;
-    color: #d63384;
-  }
-  .product {
-    margin-top: 30px;
-  }
-  .product-image {
-    width: 300px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  }
-  .cta-button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 25px;
-    background-color: #d63384;
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background 0.3s ease;
-  }
-  .cta-button:hover {
-    background-color: #a31f64;
-  }
-</style>
-<!-- TODO 1: Create the HTML Boilerplate -->
+  <main class="container">
+    <!-- Hero -->
+    <section id="hero" class="hero">
+      <div class="hero-left">
+        <div class="eyebrow">New Arrivals • Spring 2025</div>
+        <h1 class="hero-title">Bold colors. Flawless finish. Everyday glamour.</h1>
+        <p class="hero-desc">Explore our curated collection of long-wear foundations, vibrant lip shades, and cruelty-free formulas — created for every skin tone and every style.</p>
 
-<!-- TODO 2: Add Your previous projects' HTML into the public folder -->
+        <div class="hero-cta">
+          <a class="btn primary" href="#products">Shop Bestsellers</a>
+          <a class="btn ghost" href="#collections">Explore Collections</a>
+        </div>
 
-<!-- TODO 3: Take screenshots of your project previews and add the images to the images folder -->
+        <div class="features" style="margin-top:20px">
+          <div class="feature">
+            <div class="icon">✓</div>
+            <div>
+              <div style="font-weight:700">Cruelty Free</div>
+              <div style="font-size:0.9rem;color:var(--muted)">Conscious ingredients</div>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="icon">⏱</div>
+            <div>
+              <div style="font-weight:700">Long Wear</div>
+              <div style="font-size:0.9rem;color:var(--muted)">Stay flawless all day</div>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="icon">🎨</div>
+            <div>
+              <div style="font-weight:700">Wide Shades</div>
+              <div style="font-size:0.9rem;color:var(--muted)">Inclusive tones</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<!-- TODO 4: Add titles/subtitles etc. -->
+      <div class="hero-image">
+        <!-- Working public image (Pixabay) -->
+        <img src="https://cdn.pixabay.com/photo/2016/11/18/22/19/cosmetics-1835653_1280.jpg" alt="Flat lay makeup: brushes, palettes and lipsticks">
+      </div>
+    </section>
 
-<!-- TODO 5: Add a link to the project pages -->
+    <!-- Products -->
+    <section id="products">
+      <h2 style="font-family:Playfair Display, serif; font-size:1.6rem; margin:14px 0">Best Sellers</h2>
 
-<!-- TODO 6: Add images to show the project previews
-HINT for TODO 6: You can use the height attribute set to 200 to make the image smaller:
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-height -->
+      <div class="products">
+        <!-- sample card 1 -->
+        <article class="card">
+          <img src="https://cdn.pixabay.com/photo/2017/08/06/00/33/lipstick-2595830_1280.jpg" alt="Matte lipstick">
+          <h4>Matte Luxe Lipstick</h4>
+          <div class="price">₹799</div>
+          <button class="btn primary" onclick="quickView(this)">Quick View</button>
+        </article>
 
-<!-- TODO 7: Add the Contact Me and About Me page links -->
+        <!-- sample card 2 -->
+        <article class="card">
+          <img src="https://cdn.pixabay.com/photo/2017/10/10/21/49/foundation-2838267_1280.jpg" alt="Foundation bottle">
+          <h4>Full-Cover Foundation</h4>
+          <div class="price">₹1199</div>
+          <button class="btn primary" onclick="quickView(this)">Quick View</button>
+        </article>
+
+        <!-- sample card 3 -->
+        <article class="card">
+          <img src="https://cdn.pixabay.com/photo/2016/10/02/22/17/makeup-1717402_1280.jpg" alt="Eyeshadow palette">
+          <h4>Eyeshadow Palette — 12 Shades</h4>
+          <div class="price">₹999</div>
+          <button class="btn primary" onclick="quickView(this)">Quick View</button>
+        </article>
+
+        <!-- sample card 4 -->
+        <article class="card">
+          <img src="https://cdn.pixabay.com/photo/2016/03/27/21/46/mirror-1283839_1280.jpg" alt="Makeup brush set">
+          <h4>Pro Brush Set</h4>
+          <div class="price">₹699</div>
+          <button class="btn primary" onclick="quickView(this)">Quick View</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- Collections -->
+    <section id="collections">
+      <h2 style="font-family:Playfair Display, serif; font-size:1.6rem; margin:18px 0">Featured Collections</h2>
+      <div class="collections">
+        <div class="collection">
+          <h3 style="margin:0 0 8px 0">Glow & Dew</h3>
+          <p style="margin:0;color:var(--muted)">Lightweight highlighters and dewy foundations for a luminous finish.</p>
+        </div>
+        <div class="collection">
+          <h3 style="margin:0 0 8px 0">Bold Lips</h3>
+          <p style="margin:0;color:var(--muted)">Rich pigments, long-lasting comfort — statement colors that stay.</p>
+        </div>
+        <div class="collection">
+          <h3 style="margin:0 0 8px 0">Eyes Unleashed</h3>
+          <p style="margin:0;color:var(--muted)">Palettes, liners and mascaras for every eye look.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" style="margin-top:26px;padding:18px;border-radius:12px;background:var(--card);">
+      <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+        <div style="flex:1;min-width:240px">
+          <h3 style="margin:0 0 10px 0;font-family:Playfair Display, serif;">About Glamora</h3>
+          <p style="margin:0;color:var(--muted);line-height:1.6">Glamora Beauty is a makeup-first brand focused on inclusive shades and clean, high-performance formulas. We believe beauty is self-expression — every product is carefully selected to help you look and feel your best.</p>
+        </div>
+        <div style="flex:1;min-width:220px;text-align:center">
+          <img src="https://cdn.pixabay.com/photo/2018/01/09/18/03/makeup-3065176_1280.jpg" alt="Makeup close-up" style="width:100%;max-width:320px;border-radius:10px;box-shadow:0 10px 30px rgba(2,6,23,0.06)">
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section style="margin-top:26px">
+      <div class="newsletter">
+        <div style="flex:1">
+          <div style="font-weight:700">Join our Beauty List</div>
+          <div style="color:var(--muted);font-size:0.95rem">Get 10% off your first order and be the first to hear about new launches.</div>
+        </div>
+        <input id="email" type="email" placeholder="Enter your email" aria-label="Email" />
+        <button class="btn primary" onclick="subscribe()">Subscribe</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-grid container" style="padding:0">
+        <div>
+          <h4 style="margin:0 0 8px 0">Glamora</h4>
+          <div style="color:var(--muted);font-size:0.95rem">Makeup • Skincare • Beauty</div>
+        </div>
+        <div>
+          <h4 style="margin:0 0 8px 0">Shop</h4>
+          <div style="color:var(--muted)">Makeup<br/>New Arrivals<br/>Best Sellers</div>
+        </div>
+        <div>
+          <h4 style="margin:0 0 8px 0">Need help?</h4>
+          <div style="color:var(--muted)">Contact Us<br/>Shipping<br/>Returns</div>
+        </div>
+        <div>
+          <h4 style="margin:0 0 8px 0">Follow</h4>
+          <div style="color:var(--muted)">Instagram • Facebook • YouTube</div>
+        </div>
+      </div>
+
+      <div style="max-width:1200px;margin:20px auto 0;padding:0 20px;color:var(--muted);font-size:0.92rem;">
+        © <span id="yr"></span> Glamora Beauty. All rights reserved.
+      </div>
+    </footer>
+  </main>
+
+  <!-- Minimal JS -->
+  <script>
+    // set year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // mobile nav toggle
+    function toggleNav(){
+      const nav = document.getElementById('main-nav');
+      const btn = document.querySelector('.mobile-toggle');
+      if(nav.style.display === 'flex'){
+        nav.style.display = '';
+        btn.setAttribute('aria-expanded','false');
+      } else {
+        nav.style.display = 'flex';
+        btn.setAttribute('aria-expanded','true');
+      }
+    }
+
+    // Quick view placeholder
+    function quickView(btn){
+      const card = btn.closest('.card');
+      const title = card.querySelector('h4').innerText;
+      const price = card.querySelector('.price').innerText;
+      alert(title + "\\nPrice: " + price + "\\n\\n(This is a demo quick-view — replace with your modal.)");
+    }
+
+    // Newsletter action (demo)
+    function subscribe(){
+      const email = document.getElementById('email').value.trim();
+      if(!email || !email.includes('@')){ alert('Please enter a valid email'); return; }
+      alert('Thanks! We added ' + email + ' to our list (demo).');
+      document.getElementById('email').value = '';
+    }
+  </script>
+</body>
+</html>
