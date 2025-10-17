@@ -1,14 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glam Rush Help Center</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+header {
+    background-color: #ffe9f2;
+    color: #d6336c;
+    text-align: center;
+    padding: 20px;
+}
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+nav {
+    background-color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #f8bbd0;
+}
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #d6336c;
+    font-weight: bold;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+section {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+}
+section h2 {
+    color: #d6336c;
+    border-bottom: 2px solid #f8bbd0;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+.faq-list dt {
+    margin-top: 10px;
+    font-weight: bold;
+}
+.faq-list dd {
+    margin: 5px 0 15px 20px;
+}
+.shipping-list {
+    list-style: none;
+    padding: 0;
+}
+.shipping-list li {
+    margin-bottom: 10px;
+}
+form {
+    max-width: 600px;
+    margin-top: 10px;
+}
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+form button {
+    background-color: #d6336c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+}
+form button:hover {
+    background-color: #bf325d;
+}
+footer {
+    background-color: #ffe9f2;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    color: #666;
+    border-top: 1px solid #f8bbd0;
+}
+@media (max-width: 600px) {
+    nav a {
+        display: block;
+        margin: 8px 0;
+    }
+    section {
+        margin: 20px 15px;
+        padding: 15px;
+    }
+    header h1 {
+        font-size: 2em;
+    }
+}
+</style>
 </head>
-
 <body>
-help page
-</body>
 
+<header>
+    <h1>Glam Rush Help Center</h1>
+</header>
+
+<nav>
+    <a href="#faq">FAQs</a>
+    <a href="#shipping">Shipping Info</a>
+    <a href="#returns">Returns</a>
+    <a href="#contact">Contact Us</a>
+</nav>
+
+<main>
+<section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <dl class="faq-list">
+        <dt>Which payment methods do you accept?</dt>
+        <dd>We accept all major credit cards (Visa, MasterCard, American Express), PayPal, Apple Pay, and Google Pay for online purchases.</dd>
+        <dt>Do you ship internationally?</dt>
+        <dd>Yes! We ship to most countries worldwide. International shipping fees and delivery times vary by destination. You can view rates at checkout.</dd>
+        <dt>How long will it take to get my order?</dt>
+        <dd>Most orders are processed within 1–2 business days (Mon–Fri, excluding holidays) and then shipped via standard delivery (typically 3–5 business days in the USA). Faster express options are available at checkout.</dd>
+        <dt>Can I track my order?</dt>
+        <dd>Absolutely. Once your order ships, you’ll receive a confirmation email with a tracking number. Use this number on the carrier’s website to monitor delivery status.</dd>
+        <dt>How do I apply a promo code?</dt>
+        <dd>At checkout, enter your discount or promo code in the "Promotional Code" box and click "Apply". The page will update to reflect the discounted total if the code is valid.</dd>
+        <dt>Are your products cruelty-free?</dt>
+        <dd>Yes, all Glam Rush products are cruelty-free and made with ethically sourced ingredients.</dd>
+    </dl>
+</section>
+
+<section id="shipping">
+    <h2>Shipping Information</h2>
+    <p><strong>Processing Time:</strong> Orders are typically processed within 1–2 business days (Mon–Fri).</p>
+    <ul class="shipping-list">
+        <li><strong>Standard Shipping:</strong> Free on U.S. orders over $50; otherwise a flat $5.95 fee applies. Delivery usually takes 3–5 business days after shipping.</li>
+        <li><strong>Express Shipping:</strong> Optional 2-day and overnight shipping is available for an additional fee (calculated at checkout).</li>
+        <li><strong>International Shipping:</strong> Available to select countries; fees and transit times vary by location.</li>
+    </ul>
+    <p>All orders receive a shipping confirmation email with tracking information once they ship. We ship Monday through Friday, excluding holidays.</p>
+</section>
+
+<section id="returns">
+    <h2>Return & Refund Policy</h2>
+    <p>If you’re not completely satisfied, you may return unworn, unopened items within 30 days of delivery for a full refund or store credit. Please retain the original packaging and proof of purchase when returning. To initiate a return, contact our customer support or use the online returns portal.</p>
+    <p>Once we receive your return, refunds are typically processed within 5–7 business days. Please note we cannot refund shipping fees unless the return is due to our error. All returns are subject to review and approval.</p>
+</section>
+
+<section id="contact">
+    <h2>Contact Support</h2>
+    <p>If you need assistance, our customer service team is here to help. Fill out the form below, and we’ll get back to you within 1 business day. You can also reach us via live chat (Mon–Fri, 9am–5pm) or email us at <a href="mailto:support@glamrush.com">support@glamrush.com</a>.</p>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your Name">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" placeholder="How can we help you?"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+    <p><em>Need faster help? Click the Live Chat icon at the bottom of the screen.</em></p>
+</section>
+</main>
+
+<footer>
+    &copy; 2025 Glam Rush Cosmetics. All rights reserved.
+</footer>
+
+</body>
 </html>
